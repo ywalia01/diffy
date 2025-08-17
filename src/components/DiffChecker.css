@@ -1,0 +1,377 @@
+.diff-checker {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.diff-header {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-content {
+  flex: 1;
+}
+
+.app-title {
+  margin: 0 0 6px 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-icon {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.app-subtitle {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  padding: 6px 12px;
+  background: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.action-button:hover {
+  background: #f0f0f0;
+  border-color: #0066cc;
+  color: #0066cc;
+}
+
+.action-button:active {
+  background: #e0e0e0;
+}
+
+.clear-button {
+  border-color: #cc0000;
+  color: #cc0000;
+}
+
+.clear-button:hover {
+  background: #cc0000;
+  color: white;
+}
+
+/* Input Mode Toggle */
+.input-mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.mode-button {
+  padding: 8px 16px;
+  background: #ffffff;
+  color: #666;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.mode-button:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.mode-button.active {
+  background: #0066cc;
+  color: white;
+  border-color: #0066cc;
+}
+
+/* Text Input Section */
+.text-input-section {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.text-input-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.text-input-panel {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.text-input-panel .panel-header {
+  background: #f5f5f5;
+  color: #333;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.text-input-panel .panel-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.text-input-panel .panel-info {
+  font-size: 11px;
+  color: #666;
+  background: #e0e0e0;
+  padding: 1px 6px;
+}
+
+.text-input-area {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  background: #ffffff;
+  color: #333;
+  resize: none;
+  min-height: 200px;
+}
+
+.text-input-area:focus {
+  background: #ffffff;
+}
+
+.text-input-area::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Upload Section */
+.upload-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.upload-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.upload-panel {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.upload-panel h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+/* Diff Viewer Container */
+.diff-viewer-container {
+  flex: 1;
+  margin-bottom: 20px;
+  min-height: 400px;
+}
+
+/* Footer */
+.diff-footer {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.file-label {
+  font-weight: 600;
+  color: #666;
+  min-width: 60px;
+}
+
+.file-name {
+  color: #333;
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border: 1px solid #ccc;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 11px;
+}
+
+.footer-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-button {
+  padding: 6px 12px;
+  background: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.footer-button:hover {
+  background: #f0f0f0;
+  border-color: #006600;
+  color: #006600;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .text-input-container,
+  .upload-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .diff-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-actions {
+    justify-content: center;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .diff-checker {
+    padding: 12px;
+  }
+
+  .diff-header {
+    padding: 12px;
+  }
+
+  .app-title {
+    font-size: 1.3rem;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+
+  .input-mode-toggle {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .mode-button {
+    width: 100%;
+  }
+
+  .text-input-panel {
+    min-height: 200px;
+  }
+
+  .text-input-area {
+    padding: 8px;
+    font-size: 11px;
+    min-height: 150px;
+  }
+
+  .upload-panel {
+    padding: 12px;
+  }
+
+  .upload-panel h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .diff-viewer-container {
+    min-height: 300px;
+  }
+
+  .file-info {
+    width: 100%;
+  }
+
+  .footer-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}

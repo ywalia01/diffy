@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# diffy 🔍
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, professional text comparison tool built with React and TypeScript. diffy provides a clean, feature-rich interface for comparing text files and code, similar to diffchecker.com but open source and more powerful.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **Real-time Diff Comparison**: Instant line-by-line difference highlighting
+- **File Upload Support**: Upload text files directly for comparison
+- **Advanced Settings**: Configure diff options like ignore whitespace, case sensitivity
+- **Line Selection & Merging**: Select specific lines and merge them between panels
+- **Modern UI/UX**: Beautiful gradient design with smooth animations
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **Copy & Download**: Export diff results to clipboard or download as file
+- **TypeScript**: Full type safety and better development experience
+- **Accessibility**: Keyboard navigation and screen reader support
 
-### `npm start`
+## 🚀 Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (version 16 or higher)
+- npm or yarn
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
+```bash
+git clone https://github.com/yourusername/diffy.git
+cd diffy
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Available Scripts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `npm start` - Runs the app in development mode
+- `npm run build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm run type-check` - Runs TypeScript type checking
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🎯 Usage
 
-## Learn More
+1. **Text Input**: Enter or paste text in the left (Original) and right (Modified) panels
+2. **File Upload**: Click the "Upload File" button to load text files directly
+3. **View Differences**: Differences are highlighted in real-time with color coding:
+   - 🟢 Green: Added lines
+   - 🔴 Red: Removed lines
+   - 🟡 Yellow: Selected lines (for merging)
+4. **Line Selection**: Click on lines to select them for merging
+5. **Merge Lines**: Use the merge buttons to copy selected lines between panels
+6. **Settings**: Configure diff options using the settings panel
+7. **Export**: Copy diff results to clipboard or download as a file
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🛠️ Technology Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **React 18** - Modern React with hooks and functional components
+- **TypeScript** - Type-safe JavaScript development
+- **CSS3** - Modern styling with gradients, animations, and responsive design
+- **diff** - Powerful diff algorithm for text comparison
+- **File API** - Native browser file handling
 
-### Code Splitting
+## 🎨 Design Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Glassmorphism UI**: Modern glass-like interface with backdrop blur effects
+- **Gradient Backgrounds**: Beautiful color gradients throughout the interface
+- **Smooth Animations**: Hover effects, transitions, and micro-interactions
+- **Professional Typography**: Clean, readable fonts optimized for code display
+- **Responsive Grid**: Adaptive layout that works on all screen sizes
 
-### Analyzing the Bundle Size
+## 🔧 Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The application includes several configurable settings:
 
-### Making a Progressive Web App
+- **Ignore Whitespace**: Skip differences in spaces, tabs, and line endings
+- **Ignore Case**: Treat uppercase and lowercase as the same
+- **Show Line Numbers**: Display line numbers in the diff view
+- **Word Wrap**: Enable text wrapping in input areas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📱 Browser Support
 
-### Advanced Configuration
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🤝 Contributing
 
-### Deployment
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📄 License
 
-### `npm run build` fails to minify
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🙏 Acknowledgments
+
+- Inspired by [diffchecker.com](https://diffchecker.com)
+- Built with modern web technologies and best practices
+- Designed for developers, by developers
+
+---
+
+**diffy** - Making text comparison clean and powerful! 🔍✨
