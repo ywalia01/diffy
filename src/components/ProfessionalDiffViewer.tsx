@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
+  Button,
+  ButtonGroup,
+} from "@chakra-ui/react";
+import {
   DiffPart,
   DiffLine,
   DiffSettings,
@@ -36,11 +40,8 @@ const ProfessionalDiffViewer: React.FC<ProfessionalDiffViewerProps> = ({
   const [selectedLines] = useState<Set<number>>(new Set());
   const [scrollSync, setScrollSync] = useState(true);
   const [mergePopup, setMergePopup] = useState<{
-    visible: boolean;
     lineIndex: number;
     side: "left" | "right";
-    x: number;
-    y: number;
   } | null>(null);
 
   const leftScrollRef = useRef<HTMLDivElement>(null);
@@ -153,13 +154,9 @@ const ProfessionalDiffViewer: React.FC<ProfessionalDiffViewerProps> = ({
 
   const handleLineClick = useCallback(
     (lineIndex: number, side: "left" | "right", event: React.MouseEvent) => {
-      const rect = event.currentTarget.getBoundingClientRect();
       setMergePopup({
-        visible: true,
         lineIndex,
         side,
-        x: rect.left + rect.width / 2,
-        y: rect.top - 10,
       });
     },
     []
@@ -426,8 +423,9 @@ const ProfessionalDiffViewer: React.FC<ProfessionalDiffViewerProps> = ({
           <div
             className="merge-popup"
             style={{
-              left: mergePopup.x,
-              top: mergePopup.y,
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -469,26 +467,28 @@ const ProfessionalDiffViewer: React.FC<ProfessionalDiffViewerProps> = ({
                   })()}
                 </span>
               </div>
-              <button
-                className="merge-button merge-left"
-                onClick={() => {
-                  console.log("Button clicked: Merge to Right");
-                  handleMerge("left-to-right");
-                }}
-              >
-                <span className="merge-arrow">→</span>
-                Merge to Right
-              </button>
-              <button
-                className="merge-button merge-right"
-                onClick={() => {
-                  console.log("Button clicked: Merge to Left");
-                  handleMerge("right-to-left");
-                }}
-              >
-                Merge to Left
-                <span className="merge-arrow">←</span>
-              </button>
+              <ButtonGroup gap={2} size="sm">
+                <Button
+                  variant="outline"
+                  colorScheme="blue"
+                  onClick={() => {
+                    console.log("Button clicked: Merge to Right");
+                    handleMerge("left-to-right");
+                  }}
+                >
+                  → Merge to Right
+                </Button>
+                <Button
+                  variant="outline"
+                  colorScheme="green"
+                  onClick={() => {
+                    console.log("Button clicked: Merge to Left");
+                    handleMerge("right-to-left");
+                  }}
+                >
+                  Merge to Left ←
+                </Button>
+              </ButtonGroup>
             </div>
           </div>
         </div>
