@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import { DiffSettings } from "../types";
 import ProfessionalDiffViewer from "./ProfessionalDiffViewer";
 import EnhancedFileUpload from "./EnhancedFileUpload";
@@ -93,51 +94,61 @@ const DiffChecker: React.FC = () => {
 
         <div className="header-actions">
           <SettingsPanel settings={settings} onSettingsChange={setSettings} />
-          <button
-            onClick={copyDiffResult}
-            className="action-button"
-            title="Copy diff result"
-          >
-            📋 Copy
-          </button>
-          <button
-            onClick={downloadDiffResult}
-            className="action-button"
-            title="Download diff result"
-          >
-            💾 Download
-          </button>
-          <button
-            onClick={swapTexts}
-            className="action-button"
-            title="Swap texts"
-          >
-            🔄 Swap
-          </button>
-          <button
-            onClick={clearAll}
-            className="action-button clear-button"
-            title="Clear all text"
-          >
-            🗑️ Clear
-          </button>
+          <ButtonGroup gap={2} size="sm">
+            <Button
+              onClick={copyDiffResult}
+              title="Copy diff result"
+              variant="outline"
+              colorScheme="gray"
+            >
+              📋 Copy
+            </Button>
+            <Button
+              onClick={downloadDiffResult}
+              title="Download diff result"
+              variant="outline"
+              colorScheme="gray"
+            >
+              💾 Download
+            </Button>
+            <Button
+              onClick={swapTexts}
+              title="Swap texts"
+              variant="outline"
+              colorScheme="gray"
+            >
+              🔄 Swap
+            </Button>
+            <Button
+              onClick={clearAll}
+              title="Clear all text"
+              variant="outline"
+              colorScheme="red"
+            >
+              🗑️ Clear
+            </Button>
+          </ButtonGroup>
         </div>
       </header>
 
       {/* Input Mode Toggle */}
       <div className="input-mode-toggle">
-        <button
-          className={`mode-button ${inputMode === "text" ? "active" : ""}`}
-          onClick={() => setInputMode("text")}
-        >
-          📝 Text Input
-        </button>
-        <button
-          className={`mode-button ${inputMode === "upload" ? "active" : ""}`}
-          onClick={() => setInputMode("upload")}
-        >
-          📁 File Upload
-        </button>
+        <ButtonGroup gap={2} size="sm" attached>
+          <Button
+            variant={inputMode === "text" ? "solid" : "outline"}
+            colorScheme={inputMode === "text" ? "blue" : "gray"}
+            onClick={() => setInputMode("text")}
+          >
+            📝 Text Input
+          </Button>
+          <Button
+            variant={inputMode === "upload" ? "solid" : "outline"}
+            colorScheme={inputMode === "upload" ? "blue" : "gray"}
+            onClick={() => setInputMode("upload")}
+          >
+            📁 File Upload
+          </Button>
+        </ButtonGroup>
       </div>
 
       {/* Text Input Section */}
