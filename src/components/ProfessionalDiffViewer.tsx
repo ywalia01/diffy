@@ -46,6 +46,66 @@ const ProfessionalDiffViewer: React.FC<ProfessionalDiffViewerProps> = ({
   const leftScrollRef = useRef<HTMLDivElement>(null);
   const rightScrollRef = useRef<HTMLDivElement>(null);
 
+  // Process diff lines function - moved before handleMerge
+  const processDiffLines = useCallback(
+    (diffResult: DiffPart[], side: "left" | "right"): DiffLine[] => {
+      const lines: DiffLine[] = [];
+      let lineCount = 0;
+      let originalLineCount = 0;
+      let modifiedLineCount = 0;
+
+      diffResult.forEach((part, partIndex) => {
+        const partLines = part.value
+          .split("\n")
+          .filter(
+            (line, i, arr) =>
+              line !== "" || i < arr.length - 1 || part.value.endsWith("\n")
+          );
+
+        partLines.forEach((line, lineIndex) => {
+          const currentLine = lineCount;
+
+          if (
+            (side === "left" && !part.added) ||
+            (side === "right" && !part.removed)
+          ) {
+            const isAdded = !!part.added;
+            const isRemoved = !!part.removed;
+            const shouldDisplay =
+              (side === "left" && !isAdded) || (side === "right" && !isRemoved);
+
+            if (shouldDisplay) {
+              lines.push({
+                content: line,
+                lineNumber: currentLine + 1,
+                originalLineNumber:
+                  side === "left" ? originalLineCount + 1 : undefined,
+                modifiedLineNumber:
+                  side === "right" ? modifiedLineCount + 1 : undefined,
+                isAdded,
+                isRemoved,
+                isSelected: selectedLines.has(currentLine),
+                partIndex,
+                lineIndex,
+              });
+              lineCount++;
+            }
+          }
+
+          if (side === "left" && !part.added) {
+            originalLineCount++;
+          }
+          if (side === "right" && !part.removed) {
+            modifiedLineCount++;
+          }
+        });
+      });
+
+      return lines;
+    },
+    [selectedLines]
+  );
+
   // Calculate diff whenever inputs or settings change
   useEffect(() => {
     if (leftText || rightText) {
@@ -269,64 +329,7 @@ const ProfessionalDiffViewer: React.FC<ProfessionalDiffViewerProps> = ({
     );
   };
 
-  const processDiffLines = (
-    diffResult: DiffPart[],
-    side: "left" | "right"
-  ): DiffLine[] => {
-    const lines: DiffLine[] = [];
-    let lineCount = 0;
-    let originalLineCount = 0;
-    let modifiedLineCount = 0;
-
-    diffResult.forEach((part, partIndex) => {
-      const partLines = part.value
-        .split("\n")
-        .filter(
-          (line, i, arr) =>
-            line !== "" || i < arr.length - 1 || part.value.endsWith("\n")
-        );
-
-      partLines.forEach((line, lineIndex) => {
-        const currentLine = lineCount;
-
-        if (
-          (side === "left" && !part.added) ||
-          (side === "right" && !part.removed)
-        ) {
-          const isAdded = !!part.added;
-          const isRemoved = !!part.removed;
-          const shouldDisplay =
-            (side === "left" && !isAdded) || (side === "right" && !isRemoved);
-
-          if (shouldDisplay) {
-            lines.push({
-              content: line,
-              lineNumber: currentLine + 1,
-              originalLineNumber:
-                side === "left" ? originalLineCount + 1 : undefined,
-              modifiedLineNumber:
-                side === "right" ? modifiedLineCount + 1 : undefined,
-              isAdded,
-              isRemoved,
-              isSelected: selectedLines.has(currentLine),
-              partIndex,
-              lineIndex,
-            });
-            lineCount++;
-          }
-        }
-
-        if (side === "left" && !part.added) {
-          originalLineCount++;
-        }
-        if (side === "right" && !part.removed) {
-          modifiedLineCount++;
-        }
-      });
-    });
-
-    return lines;
-  };
+  // processDiffLines function moved above and wrapped in useCallback
 
   return (
     <div className="professional-diff-viewer">
